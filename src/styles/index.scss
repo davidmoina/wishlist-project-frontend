@@ -1,0 +1,6 @@
+@use './abstracts/normalize';
+@use './abstracts/variables' as var;
+
+body {
+    font-family: var.$font-primary;
+}

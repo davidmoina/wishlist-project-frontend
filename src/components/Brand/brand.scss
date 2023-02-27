@@ -1,0 +1,9 @@
+@use '../../styles/abstracts/variables' as var;
+
+.brand-container {
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var.$purple-dark;
+}
