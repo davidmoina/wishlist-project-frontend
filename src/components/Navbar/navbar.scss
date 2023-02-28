@@ -1,9 +1,11 @@
+@use '../../styles/abstracts/variables' as var;
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1440px;
     height: 50px;
-    margin: 0.5em auto;
-    background-color: aqua;
+    margin: 0 auto;
+    color: var.$purple-dark;
 }

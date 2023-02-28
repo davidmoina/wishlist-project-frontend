@@ -1,0 +1,36 @@
+@use '../../styles/abstracts/variables' as var;
+
+.form {
+  max-width: 736px;
+
+  &__input {
+    height: 54px;
+    width: 638px;
+    border: none;
+    border-radius: 8px;
+    background-color: var.$gray-500;
+    color: var.$gray-100;
+    padding-left: 1em;
+
+    &:focus {
+      outline: solid var.$purple-dark;
+    }
+  }
+
+  &__button {
+    width: 90px;
+    height: 52px;
+    border: none;
+    border-radius: 8px;
+    background-color: var.$blue-dark;
+    color: var.$gray-100;
+    margin-left: 0.5em;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var.$blue;
+    }
+  }
+
+
+}

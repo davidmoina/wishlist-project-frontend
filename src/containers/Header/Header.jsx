@@ -1,8 +1,9 @@
 import React from 'react'
+import './header.scss'
 
 const Header = ({children}) => {
   return (
-    <header>
+    <header className='header'>
       {children}
     </header>
   )
