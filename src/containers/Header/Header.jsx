@@ -1,10 +1,13 @@
 import React from 'react'
+import Brand from '../../components/Brand/Brand'
+import Navbar from '../../components/Navbar/Navbar'
 import './header.scss'
 
-const Header = ({children}) => {
+const Header = () => {
   return (
     <header className='header'>
-      {children}
+      {/* <Navbar/> */}
+      <Brand/>
     </header>
   )
 }

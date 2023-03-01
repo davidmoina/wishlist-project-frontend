@@ -1,7 +1,10 @@
 @use './abstracts/normalize';
 @use './abstracts/variables' as var;
 
+body {
+    background-color: var.$gray-600;
+}
+
 .App {
     font-family: var.$font-primary;
-    background-color: var.$gray-600;
 }

@@ -1,14 +1,31 @@
 import React, { useState } from 'react'
-import {MdDeleteForever, MdEditNote} from 'react-icons/md'
+import {MdDeleteForever} from 'react-icons/md'
+import {AiFillEdit} from 'react-icons/ai'
 import './task.scss'
 
-const Task = ({task, toggleComplete, handleDelete, handleEdit}) => {
+const Task = ({task, toggleComplete, handleDelete, handleEdit, toggleEditing}) => {
 
-  const [active, setActive] = useState(task.done)
+  const [active, setActive] = useState(task.done);
+  const [edit, setEdit] = useState(false);
+  const [newText, setNewText] = useState("")
 
-  const handleActive = (e, item) => {
+  const handleActive = (e) => {
     setActive(e.target.checked)
     toggleComplete(task);
+  }
+
+  const activeEdit = () => {
+    setEdit(!edit);
+    setNewText(task.text);
+    toggleEditing(task)
+  }
+
+  const editTask = (e) => {
+    if(e.keyCode === 13) {
+      handleEdit(task, newText);
+      setEdit(false);
+      toggleEditing(task);
+    }
   }
 
   return (
@@ -17,10 +34,13 @@ const Task = ({task, toggleComplete, handleDelete, handleEdit}) => {
         <input onChange={handleActive} id={`checkbox${task.id}`} defaultChecked={active} className="hidden checkbox-input" type="checkbox"/>
         <label className="checkbox" htmlFor={`checkbox${task.id}`}></label>
       </div>
-      <p className={`task-text ${active && "task-text--done"}`}>{task.text}</p>
+      {edit 
+      ? <input className='task-text task-text--inputEdit' type="text" value={newText} onKeyUp={editTask} onChange={(e) => setNewText(e.target.value)}/>
+      : <p className={`task-text ${active && "task-text--done"}`}>{task.text}</p>}
+      
       <div className='actions-container'>
-        <span><MdDeleteForever/></span>
-        <span><MdEditNote/></span>
+        <span className='btn-delete' onClick={() => handleDelete(task.id)}><MdDeleteForever/></span>
+        <span className='btn-edit' onClick={activeEdit}><AiFillEdit/></span>
       </div>
     </div>
   )

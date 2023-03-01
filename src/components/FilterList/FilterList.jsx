@@ -1,14 +1,17 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom';
 import './filterList.scss'
 
-const FilterList = ({tasksCount}) => {
+const FilterList = ({tasksCount, completeCount, activeCount}) => {
   const totalTasks = tasksCount();
+  const totalActive = activeCount()
+  const totalComplete = completeCount()
 
   return (
     <div className='filter-container'>
-      <p>Whishes <span className='tasks-count'>{totalTasks}</span></p>
-      <p>Active <span className='tasks-count'>0</span></p>
-      <p>Completed <span className='tasks-count'>0</span></p>
+      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/">Whishes <span className='tasks-count'>{totalTasks}</span></NavLink>
+      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/active">Active <span className='tasks-count'>{totalActive}</span></NavLink>
+      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/completed">Completed <span className='tasks-count'>{totalComplete}</span></NavLink>
     </div>
   )
 }

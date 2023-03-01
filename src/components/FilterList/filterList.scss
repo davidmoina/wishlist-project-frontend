@@ -3,8 +3,19 @@
 .filter-container {
   display: flex;
   width: 100%;
+  margin: 1em 0;
   justify-content: space-between;
-  color: var.$blue;
+
+  .link{
+    color: var.$blue;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+
+    &--active {
+      color: var.$purple-dark;
+    }
+  }
   
   .tasks-count {
     display: inline-block;

@@ -59,10 +59,30 @@
     &--done {
       text-decoration: line-through;
     }
+
+    &--inputEdit {
+      background-color: var.$gray-400;
+      color: var.$gray-100;
+      border-radius: 6px;
+      // padding-left: 1em;
+    }
   }
 
   .actions-container {
     font-size: 1.3rem;
+
+    span {
+      cursor: pointer;
+      color: var.$gray-300;
+
+      &:hover {
+        color: var.$gray-100;
+      }
+    }
+
+    .btn-delete:hover {
+      color: var.$danger
+    }
   }
 }
 

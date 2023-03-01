@@ -1,14 +1,11 @@
 @use '../../styles/abstracts/variables' as var;
 
-.main-container {
-  background-color: var.$gray-600;
-  min-height: 78vh;
-
-  .tasks-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 736px;
-    margin: 0 auto;
-  }
+.tasks-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 736px;
+  margin: 0 auto 2em;
 }
+
+
