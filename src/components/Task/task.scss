@@ -4,13 +4,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 736px;
   min-height: 72px;
   padding: 0 1em;
   gap: 12px;
   border-radius: 8px;
   background-color: var.$gray-500;
   color: var.$gray-100;
+
+  @media (max-width: 740px) {
+    width: 95%;
+    margin: 0 auto;
+  }
 
   .check_container {
     position: relative;

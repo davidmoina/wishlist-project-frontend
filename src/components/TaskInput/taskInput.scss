@@ -1,10 +1,14 @@
 @use '../../styles/abstracts/variables' as var;
 
 .form {
-  width: 95%;
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
+
+  @media (max-width: 740px) {
+    width: 95%;
+  }
 
   &__input {
     height: 54px;
