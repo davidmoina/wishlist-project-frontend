@@ -1,5 +1,5 @@
 import React from 'react'
-import Loader from '../../components/Loader/Loader'
+import EmptyMessage from '../../components/EmptyMessage/EmptyMessage'
 import Task from '../../components/Task/Task'
 
 const ActiveTasks = ({activeTasks, toggleComplete, handleDelete, handleEdit, toggleEditing}) => {
@@ -9,7 +9,7 @@ const ActiveTasks = ({activeTasks, toggleComplete, handleDelete, handleEdit, tog
         ? (activeTasks.map(item => 
           <Task key={item.id} task={item} toggleComplete={toggleComplete} handleEdit={handleEdit} handleDelete={handleDelete} toggleEditing={toggleEditing}/>
           ))
-        : <Loader/>}
+        : <EmptyMessage/>}
     </div>
   )
 }

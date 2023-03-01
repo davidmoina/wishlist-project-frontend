@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import Loader from '../Loader/Loader'
+import React from 'react'
+import EmptyMessage from '../EmptyMessage/EmptyMessage'
 import Task from '../Task/Task'
 import './itemList.scss'
 
@@ -12,7 +12,7 @@ const ItemList = ({allTasks, toggleComplete, handleEdit, handleDelete, toggleEdi
         ? (allTasks.map(item => 
           <Task key={item.id} task={item} toggleComplete={toggleComplete} handleEdit={handleEdit} handleDelete={handleDelete} toggleEditing={toggleEditing}/>
           ))
-        : <Loader/>}
+        : <EmptyMessage/>}
     </div>
   )
 }

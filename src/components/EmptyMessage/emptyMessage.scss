@@ -1,0 +1,6 @@
+@use '../../styles/abstracts/variables' as var;
+
+.empty-container {
+  color: var.$gray-300;
+  text-align: center;
+}
