@@ -25,7 +25,7 @@ const TasksProvider = ({children}) => {
   };
 
   const onEdit = (task, newText) => {
-    const taskEdited = data.map(item => item.id === task.id ? {...item, text: newText} : item)
+    const taskEdited = data.map(item => item.id === task.id ? {...item, text: newText, isEditing: false} : item)
     setData([...taskEdited]);
   }
 

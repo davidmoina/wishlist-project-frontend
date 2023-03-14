@@ -16,16 +16,14 @@ const Task = ({task, toggleComplete, onDelete, onEdit, toggleEditing}) => {
 
   const activeEdit = () => {
     setEdit(!edit);
+    toggleEditing(task);
     setNewText(task.text);
-    toggleEditing(task)
   }
 
-  const editTask = (e) => {
+  const editTask =(e) => {
     if(e.keyCode === 13) {
-      setEdit(false);
-      
       onEdit(task, newText)
-      toggleEditing(task);
+      setEdit(false);
     }
   }
 
