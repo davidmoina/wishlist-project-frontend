@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
-import { addDoc, collection } from "firebase/firestore";
-import { db } from '../../Firebase/config';
+import React, { useContext, useState } from 'react'
 import './taskInput.scss'
 import {IoIosAddCircleOutline} from 'react-icons/io'
 import {BiMessageAltError} from 'react-icons/bi'
+import { TasksContext } from '../../context/TasksContext';
 
 const TaskInput = () => {
 
   const [taskText, setTaskText] = useState("");
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
+
+  const { addTask } = useContext(TasksContext);
 
   const handleChange = (e) => {
     const text = e.target.value;
@@ -23,18 +24,13 @@ const TaskInput = () => {
     e.preventDefault()
 
     if(taskText !== "") {
-      try {
-        await addDoc(collection(db, "tasks"), {
-          text: taskText,
-          done: false,
-          isEditing: false,
-          collection: ""
-        });
-
-        setTaskText("");
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
+      addTask({
+            text: taskText,
+            done: false,
+            isEditing: false,
+            collection: ""
+          })
+          setTaskText("");
     } else {
       setError(true)
     }

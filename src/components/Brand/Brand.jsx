@@ -6,7 +6,7 @@ const Brand = () => {
   return (
     <div className='brand-container'>
       <BiRocket/>
-      <h4> Wishlist</h4>
+      <h4> ToDo-List</h4>
     </div>
   )
 }

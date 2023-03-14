@@ -1,13 +1,12 @@
-import Header from "./containers/Header/Header"
-import MainContainer from "./containers/MainContainer/MainContainer"
+import TasksProvider from "./context/TasksProvider"
+import Routing from "./routes/Routing.routes"
 
 function App() {
 
   return (
-    <div className="App">
-      <Header/>
-      <MainContainer/>
-    </div>
+    <TasksProvider>
+      <Routing/>
+    </TasksProvider>
   )
 }
 

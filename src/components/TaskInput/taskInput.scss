@@ -1,8 +1,9 @@
 @use '../../styles/abstracts/variables' as var;
 
 .form {
+  top: -27px;
   width: 100%;
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: center;
 

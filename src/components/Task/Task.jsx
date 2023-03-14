@@ -3,11 +3,11 @@ import {MdDeleteForever} from 'react-icons/md'
 import {AiFillEdit} from 'react-icons/ai'
 import './task.scss'
 
-const Task = ({task, toggleComplete, handleDelete, handleEdit, toggleEditing}) => {
+const Task = ({task, toggleComplete, onDelete, onEdit, toggleEditing}) => {
 
   const [active, setActive] = useState(task.done);
   const [edit, setEdit] = useState(false);
-  const [newText, setNewText] = useState("")
+  const [newText, setNewText] = useState("");
 
   const handleActive = (e) => {
     setActive(e.target.checked)
@@ -22,8 +22,9 @@ const Task = ({task, toggleComplete, handleDelete, handleEdit, toggleEditing}) =
 
   const editTask = (e) => {
     if(e.keyCode === 13) {
-      handleEdit(task, newText);
       setEdit(false);
+      
+      onEdit(task, newText)
       toggleEditing(task);
     }
   }
@@ -39,7 +40,7 @@ const Task = ({task, toggleComplete, handleDelete, handleEdit, toggleEditing}) =
       : <p className={`task-text ${active && "task-text--done"}`}>{task.text}</p>}
       
       <div className='actions-container'>
-        <span className='btn-delete' onClick={() => handleDelete(task.id)}><MdDeleteForever/></span>
+        <span className='btn-delete' onClick={() => onDelete(task)}><MdDeleteForever/></span>
         <span className='btn-edit' onClick={activeEdit}><AiFillEdit/></span>
       </div>
     </div>
