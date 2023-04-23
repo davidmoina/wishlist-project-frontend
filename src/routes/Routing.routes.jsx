@@ -22,7 +22,7 @@ const Routing= () => {
             <Route path='/:status' element={<ItemList/>}/>
           </Route>
         </Route>
-        <Route path='/login' element={<Login/>} />
+        <Route path='/welcome' element={<Login/>} />
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>

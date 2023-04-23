@@ -8,7 +8,7 @@ const Navbar = () => {
   const { logout, user } = useAuth0();
 
   const handleLogout = () => {
-    logout({logoutParams: {returnTo: window.location.origin + "/login"}});
+    logout({logoutParams: {returnTo: window.location.origin + "/welcome"}});
     window.localStorage.removeItem("userId");
   }
 
