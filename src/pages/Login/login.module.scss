@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var.$gray-700;
   height: 100vh;
 }
 
@@ -12,10 +13,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 50px;
   width: 300px;
-  height: 300px;
   border-radius: 16px;
-  background-color: var.$gray-500;
   padding: 1em;
 
   h2 {
@@ -39,6 +39,7 @@
   background-image: linear-gradient(#212121, #212121),  linear-gradient(137.48deg, #ffdb3b 10%,#FE53BB 45%, #8F51EA 67%, #0044ff 87%);
   background-origin: border-box;
   background-clip: content-box, border-box;
+  cursor: pointer;
 
   .containerStars {
   position: fixed;
@@ -91,7 +92,6 @@
 
   strong {
     z-index: 2;
-    font-family: 'Avalors Personal Use';
     font-size: 12px;
     letter-spacing: 5px;
     color: #FFFFFF;

@@ -23,8 +23,8 @@ const TasksProvider = ({children}) => {
   }, [userId]);
 
 
-  // const addTask = (text) => {
-  //   const newTaskArr = [...data, {...text, id: id}]  
+  // const onAdd = (text) => {
+  //   const newTaskArr = [...data, {...text}]  
   //   setData(newTaskArr);
   // }
 

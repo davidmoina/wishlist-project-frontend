@@ -26,13 +26,12 @@ const TaskInput = () => {
     e.preventDefault();
 
     if(!error) {
-      addTask(taskText);
+      await addTask(taskText);
       const tasks = await getTasks()
       setData(tasks)
       setTaskText("");
     };
     
-
   }
 
   return (

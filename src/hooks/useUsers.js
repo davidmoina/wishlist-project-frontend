@@ -20,7 +20,7 @@ export const useUsers = () => {
       const result = await response.json();
 
       console.log(result);
-      window.localStorage.setItem("userId", result.id)
+      window.localStorage.setItem("userId", result._id)
       return result.id
 
     } catch (error) {
