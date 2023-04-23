@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
-import { generatorId } from "../services/taskIdGenerator";
 import { TasksContext } from "./TasksContext"
 import { useTasks } from "../hooks/useTasks";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useUsers } from "../hooks/useUsers";
 
 const TasksProvider = ({children}) => {
 
   const [data, setData] = useState([]);
+  const [userId, setUserId] = useState("");
+  const { isAuthenticated } = useAuth0();
   
   const { getTasks } = useTasks();
 
   useEffect(() => {
 
+    if(isAuthenticated) {
       getTasks().then(tasks => (
         setData(tasks)
       ))
+    }
 
-  }, []);
+  }, [userId]);
 
 
   // const addTask = (text) => {
@@ -36,7 +40,7 @@ const TasksProvider = ({children}) => {
   }
 
   return (
-    <TasksContext.Provider value={{data, setData, onEdit, onDelete}}>
+    <TasksContext.Provider value={{data, setData, onEdit, onDelete, setUserId}}>
       {children}
     </TasksContext.Provider>
   )

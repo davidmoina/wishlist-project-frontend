@@ -21,6 +21,7 @@ export const useUsers = () => {
 
       console.log(result);
       window.localStorage.setItem("userId", result.id)
+      return result.id
 
     } catch (error) {
       console.error(error);

@@ -3,18 +3,21 @@ import FilterList from '../../components/FilterList/FilterList'
 import TaskInput from '../../components/TaskInput/TaskInput'
 import Header from '../../containers/Header/Header'
 import MainContainer from '../../containers/MainContainer/MainContainer'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useUsers } from '../../hooks/useUsers'
-import { useState } from 'react'
+import { TasksContext } from '../../context/TasksContext'
 
 const Home = () => {
 
   const { checkUser } = useUsers();
+  const { setUserId } = useContext(TasksContext);
 
   useEffect(() => {
-    checkUser();
+    checkUser()
+    .then((data) => (
+      setUserId(data)
+    ));
   }, [])
-  
   
   return (
     <>
