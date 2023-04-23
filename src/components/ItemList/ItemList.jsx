@@ -7,18 +7,18 @@ import './itemList.scss'
 
 const ItemList = () => {
 
-  const { data, onDelete, onEdit, toggleComplete, toggleEditing } = useContext(TasksContext);
+  const { data } = useContext(TasksContext);
 
-  const [dataDisplayed, setDataDisplayed] = useState(data);
-
+  const [dataDisplayed, setDataDisplayed] = useState([]);
+  
   const { status } = useParams();
 
   useEffect(() => {
     if(status == "active") {
-      const activeTasks = data.filter(item => item.done === false)
+      const activeTasks = data?.filter(item => item.done === false)
       setDataDisplayed(activeTasks)
     } else if (status == "completed") {
-      const doneTasks = data.filter(item => item.done === true)
+      const doneTasks = data?.filter(item => item.done === true)
       setDataDisplayed(doneTasks)
     } else {
       setDataDisplayed(data);
@@ -28,9 +28,9 @@ const ItemList = () => {
   return (
 
     <div className='items-container'>
-      {dataDisplayed.length > 0 
+      {dataDisplayed?.length > 0 
         ? (dataDisplayed.map(item => 
-          <Task key={item.id} task={item} onDelete={onDelete} onEdit={onEdit} toggleComplete={toggleComplete} toggleEditing={toggleEditing}/>
+          <Task key={item._id} task={item} />
           ))
         : <EmptyMessage/>}
     </div>

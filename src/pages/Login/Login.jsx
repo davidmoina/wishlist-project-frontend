@@ -5,9 +5,6 @@ export const Login = () => {
 
   const {loginWithRedirect} = useAuth0();
 
-
-
-
   return (
     <div className={styles.main}>
       <div className={styles.container}>

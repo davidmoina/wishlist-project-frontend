@@ -11,14 +11,18 @@ const FilterList = () => {
   const { data } = useContext(TasksContext);
 
   useEffect(() => {
+
+    if(data) {
+      const activeTasks = data.filter(item => item.done === false)
+      setCountActive(activeTasks.length)
     
-    const activeTasks = data.filter(item => item.done === false)
-    setCountActive(activeTasks.length)
-  
-    const doneTasks = data.filter(item => item.done === true)
-    setCountDone(doneTasks.length)
-  
-    setCountAll(data.length);
+      const doneTasks = data.filter(item => item.done === true)
+      setCountDone(doneTasks.length)
+    
+      setCountAll(data.length);
+    }
+    
+    
     
   }, [data])
 

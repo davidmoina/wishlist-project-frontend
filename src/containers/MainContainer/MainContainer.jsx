@@ -1,21 +1,11 @@
-import FilterList from '../../components/FilterList/FilterList'
-import TaskInput from '../../components/TaskInput/TaskInput'
-import Header from '../Header/Header'
 import './mainContainer.scss'
-import { Outlet } from 'react-router-dom'
 
-const MainContainer = () => {
+const MainContainer = ({children}) => {
 
   return (
-      <>
-      <Header />
-      <div className='tasks-section'>          
-          <TaskInput/>
-          <FilterList />
-          <Outlet/>
-      </div>
-      </>
-      
+    <div className='tasks-section'>          
+        {children}
+    </div>
   )
 }
 

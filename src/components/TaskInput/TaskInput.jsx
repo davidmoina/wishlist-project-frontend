@@ -3,13 +3,15 @@ import './taskInput.scss'
 import {IoIosAddCircleOutline} from 'react-icons/io'
 import {BiMessageAltError} from 'react-icons/bi'
 import { TasksContext } from '../../context/TasksContext';
+import { useTasks } from '../../hooks/useTasks';
 
 const TaskInput = () => {
 
   const [taskText, setTaskText] = useState("");
   const [error, setError] = useState(false);
 
-  const { addTask } = useContext(TasksContext);
+  const { setData } = useContext(TasksContext);
+  const { addTask, getTasks } = useTasks();
 
   const handleChange = (e) => {
     const text = e.target.value;
@@ -20,24 +22,21 @@ const TaskInput = () => {
     }
   }
 
-  const handleAdd = async(e) => {
-    e.preventDefault()
+  const handleSubmit = async(e) => {
+    e.preventDefault();
 
-    if(taskText !== "") {
-      addTask({
-            text: taskText,
-            done: false,
-            isEditing: false,
-            collection: ""
-          })
-          setTaskText("");
-    } else {
-      setError(true)
-    }
+    if(!error) {
+      addTask(taskText);
+      const tasks = await getTasks()
+      setData(tasks)
+      setTaskText("");
+    };
+    
+
   }
 
   return (
-    <form onSubmit={handleAdd} className='form'>
+    <form onSubmit={handleSubmit} className='form'>
       <input className='form__input' value={taskText} name='text' onChange={handleChange} type="text" placeholder='Type something'/>
       <button className='form__button' type='submit'>Add <IoIosAddCircleOutline style={{ fill: 'white', fontSize: 'inherit' }}/></button>
       {error && <p className='error-text'><BiMessageAltError />  Please enter something</p>}

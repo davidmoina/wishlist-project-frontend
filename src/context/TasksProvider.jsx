@@ -1,46 +1,42 @@
 import { useEffect, useState } from "react";
 import { generatorId } from "../services/taskIdGenerator";
 import { TasksContext } from "./TasksContext"
+import { useTasks } from "../hooks/useTasks";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const TasksProvider = ({children}) => {
 
-  const tasksLocalStorage = JSON.parse(localStorage.getItem("tasks") || "[]");
-
-  const [data, setData] = useState(tasksLocalStorage)
-
-  const id = generatorId();
+  const [data, setData] = useState([]);
+  
+  const { getTasks } = useTasks();
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(data));
-  }, [data]);
 
-  const addTask = (text) => {
-    const newTaskArr = [...data, {...text, id: id}]  
-    setData(newTaskArr);
-  }
+      getTasks().then(tasks => (
+        setData(tasks)
+      ))
+
+  }, []);
+
+
+  // const addTask = (text) => {
+  //   const newTaskArr = [...data, {...text, id: id}]  
+  //   setData(newTaskArr);
+  // }
 
   const onDelete = (task) => {
-    const results = data.filter((item) => item.id !== task.id);
+    const results = data.filter((item) => item._id !== task._id);
     setData(results);
   };
 
-  const onEdit = (task, newText) => {
-    const taskEdited = data.map(item => item.id === task.id ? {...item, text: newText, isEditing: false} : item)
-    setData([...taskEdited]);
-  }
-
-  const toggleComplete = (task) => {
-    const taskEdited = data.map(item => item.id === task.id ? {...item, done: !task.done} : item)
-    setData([...taskEdited]);
-  }
-
-  const toggleEditing = (task) => {
-    const taskEdited = data.map(item => item.id === task.id ? {...item, isEditing: !task.isEditing} : item)
+  const onEdit = (task, prop) => {
+    console.log(prop);
+    const taskEdited = data.map(item => item._id === task._id ? {...item, ...prop} : item)
     setData([...taskEdited]);
   }
 
   return (
-    <TasksContext.Provider value={{data, addTask, onDelete, onEdit, toggleComplete, toggleEditing}}>
+    <TasksContext.Provider value={{data, setData, onEdit, onDelete}}>
       {children}
     </TasksContext.Provider>
   )
