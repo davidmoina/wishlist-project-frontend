@@ -4,6 +4,7 @@ import { useTasks } from '../../hooks/useTasks'
 import { TasksContext } from '../../context/TasksContext'
 import { BiDotsVertical } from 'react-icons/bi'
 import { TaskMenu } from '../TaskMenu/TaskMenu'
+import { toast } from 'react-hot-toast'
 
 const Task = ({task}) => {
 
@@ -21,6 +22,8 @@ const Task = ({task}) => {
     editTask(task._id, {done: !task.done})
       .then(() => {
         onEdit(task, {done: !task.done})
+        if(!task.done) return toast("Task completed", {icon: "👏"})
+        toast("Task active", {icon: "💪"})
       })
       .catch(error => (
         console.log(error)
@@ -47,6 +50,7 @@ const Task = ({task}) => {
           onEdit(task, {text: newText})
           setEdit(false)
           setShowMenu(false)
+          toast.success("Task edited")
         })
         .catch(error => (
           console.log(error)
@@ -58,6 +62,7 @@ const Task = ({task}) => {
     deleteTask(task._id)
     .then(() => {
       onDelete(task)
+      toast.success("Task deleted")
     })
     .catch(error => (
       console.log(error)
@@ -70,6 +75,8 @@ const Task = ({task}) => {
       .then(() => {
         onEdit(task, {archived: !task.archived})
         setShowMenu(false)
+        if(!task.archived) return toast.success("Archived Task")
+        toast.success("Task not archived")
       })
       .catch(error => (
         console.log(error)

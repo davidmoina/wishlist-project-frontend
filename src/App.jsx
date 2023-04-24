@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@auth0/auth0-react"
 import TasksProvider from "./context/TasksProvider"
 import Routing from "./routes/Routing.routes"
+import { Toaster } from "react-hot-toast"
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       }}
     >
       <TasksProvider>
+        <Toaster/>
         <Routing/>
       </TasksProvider>
     </Auth0Provider>

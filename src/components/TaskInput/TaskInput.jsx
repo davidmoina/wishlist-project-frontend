@@ -4,6 +4,7 @@ import {IoIosAddCircleOutline} from 'react-icons/io'
 import {BiMessageAltError} from 'react-icons/bi'
 import { TasksContext } from '../../context/TasksContext';
 import { useTasks } from '../../hooks/useTasks';
+import toast from 'react-hot-toast';
 
 const TaskInput = () => {
 
@@ -28,6 +29,7 @@ const TaskInput = () => {
     if(!error) {
       await addTask(taskText);
       const tasks = await getTasks()
+      toast.success("Task added")
       setData(tasks)
       setTaskText("");
     };
