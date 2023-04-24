@@ -6,7 +6,7 @@ export const PrivateRoutes = () => {
     const { isAuthenticated } = useAuth0();
 
     if(!isAuthenticated) {
-        return <Navigate to="/welcome"/>
+        return <Navigate to="/"/>
     }
 
     return <Outlet/>

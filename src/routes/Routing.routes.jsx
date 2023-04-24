@@ -17,13 +17,13 @@ const Routing= () => {
     <BrowserRouter>
       <Routes>
         <Route element={<PrivateRoutes/>}>
-          <Route path='/' element={<Home/>} >
+          <Route path='/home' element={<Home/>} >
             <Route index element={<ItemList/>}/>
-            <Route path='/:status' element={<ItemList/>}/>
+            <Route path='/home/:status' element={<ItemList/>}/>
           </Route>
         </Route>
-        <Route path='/welcome' element={<Login/>} />
-        <Route path='*' element={<NotFound/>}/>
+        <Route path='/' element={<Login/>} />
+        <Route path='/*' element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
   )

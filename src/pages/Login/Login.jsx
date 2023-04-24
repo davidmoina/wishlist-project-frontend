@@ -7,7 +7,7 @@ export const Login = () => {
   const { isAuthenticated } = useAuth0();
 
   if(isAuthenticated) {
-    return <Navigate to="/"/>
+    return <Navigate to="/home"/>
   }
 
   const {loginWithRedirect} = useAuth0();
