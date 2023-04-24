@@ -14,7 +14,16 @@ function App() {
       }}
     >
       <TasksProvider>
-        <Toaster toastOptions={{duration: 2000}} />
+        <Toaster 
+        toastOptions={{
+          duration: 2000,
+          style: {
+            borderRadius: '20px',
+            background: '#333',
+            color: '#fff',
+          }
+        }} 
+        />
         <Routing/>
       </TasksProvider>
     </Auth0Provider>
