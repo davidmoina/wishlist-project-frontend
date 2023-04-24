@@ -1,0 +1,17 @@
+@use "../../styles/abstracts/variables" as var;
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 140px;
+        border-radius: 50%;
+    }
+
+    p {
+        color: var.$gray-200;
+    }
+}

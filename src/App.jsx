@@ -4,8 +4,6 @@ import Routing from "./routes/Routing.routes"
 
 function App() {
 
-  console.log(import.meta.env.VITE_API_AUTH0_DOMAIN);
-
   return (
     <Auth0Provider
       domain={import.meta.env.VITE_API_AUTH0_DOMAIN}
@@ -13,8 +11,6 @@ function App() {
       authorizationParams={{
         redirect_uri: window.location.origin
       }}
-      useRefreshTokens
-      cacheLocation="localstorage"
     >
       <TasksProvider>
         <Routing/>

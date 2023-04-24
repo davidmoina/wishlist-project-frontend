@@ -1,0 +1,21 @@
+@use '../../styles/abstracts/variables' as var;
+
+.user-info-container {
+    width: 320px;
+    color: var.$gray-200;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+
+    .info__user-name {
+        text-align: center;
+    }
+
+    .user-fields {
+
+        margin-top: 2em;
+
+        div label {
+            color: var.$purple-dark;
+        }
+    }
+}

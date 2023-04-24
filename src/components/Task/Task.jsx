@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react'
-import {MdDeleteForever} from 'react-icons/md'
-import {AiFillEdit} from 'react-icons/ai'
 import './task.scss'
 import { useTasks } from '../../hooks/useTasks'
 import { TasksContext } from '../../context/TasksContext'
+import { BiDotsVertical } from 'react-icons/bi'
+import { TaskMenu } from '../TaskMenu/TaskMenu'
 
 const Task = ({task}) => {
 
   const [active, setActive] = useState(task.done);
   const [edit, setEdit] = useState(false);
   const [newText, setNewText] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
 
   const { onEdit, onDelete } =  useContext(TasksContext);
 
@@ -32,6 +33,7 @@ const Task = ({task}) => {
     editTask(task._id, {isEditing: !task.isEditing})
       .then(() => {
         onEdit(task, {isEditing: !task.isEditing})
+        setShowMenu(false)
       })
       .catch(error => (
         console.log(error)
@@ -44,6 +46,7 @@ const Task = ({task}) => {
         .then(() => {
           onEdit(task, {text: newText})
           setEdit(false)
+          setShowMenu(false)
         })
         .catch(error => (
           console.log(error)
@@ -62,6 +65,17 @@ const Task = ({task}) => {
     
   }
 
+  const handleArchive = () => {
+    editTask(task._id, {archived: !task.archived})
+      .then(() => {
+        onEdit(task, {archived: !task.archived})
+        setShowMenu(false)
+      })
+      .catch(error => (
+        console.log(error)
+      ))
+  }
+
   return (
     <div className='task-container'>
       <div className="check_container">
@@ -73,8 +87,8 @@ const Task = ({task}) => {
       : <p className={`task-text ${active && "task-text--done"}`}>{task.text}</p>}
       
       <div className='actions-container'>
-        <span className='btn-delete' onClick={handleDelete}><MdDeleteForever/></span>
-        <span className='btn-edit' onClick={activeEdit}><AiFillEdit/></span>
+        <span className='btn-edit' onClick={() => setShowMenu(!showMenu)}><BiDotsVertical/></span>
+        {showMenu && <TaskMenu handleArchive={handleArchive}  handleDelete={handleDelete} activeEdit={activeEdit}/>}
       </div>
     </div>
   )

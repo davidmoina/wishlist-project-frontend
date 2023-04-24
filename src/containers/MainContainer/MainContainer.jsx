@@ -3,7 +3,7 @@ import FilterList from '../../components/FilterList/FilterList'
 import TaskInput from '../../components/TaskInput/TaskInput'
 import './mainContainer.scss'
 
-const MainContainer = ({children}) => {
+const MainContainer = () => {
 
   return (
     <div className='tasks-section'>

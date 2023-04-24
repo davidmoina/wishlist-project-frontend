@@ -13,13 +13,11 @@ const Navbar = () => {
     window.localStorage.removeItem("userId");
   }
 
-  console.log(user);
-
   return (
     <nav className="navbar">
       <div onClick={() => setActive(!active)} className="imageContainer">
         <span className='user-name'>{user.name}</span>
-        <img src={user.picture} alt="user image" />
+        <img src={user.picture } alt="user image" />
 
         <div className={`menu ${active && "menu--active"}`}>
           <span className='user-name-menu'>{user.name}</span>

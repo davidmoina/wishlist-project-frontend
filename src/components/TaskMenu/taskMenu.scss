@@ -1,0 +1,26 @@
+@use '../../styles/abstracts/variables' as var;
+
+.task-menu-container {
+    position: absolute;
+    right: 0;
+    width: 130px;
+    padding: 0.5em 1em;
+    background-color: var.$gray-400;
+    border-radius: 6px;
+    font-size: 16px;
+
+    .task-menu-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        color: var.$gray-200;
+        cursor: pointer;
+
+        li:hover {
+            color: var.$purple;
+        }
+
+    }
+}
