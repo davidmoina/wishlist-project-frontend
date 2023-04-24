@@ -28,9 +28,9 @@ const FilterList = () => {
 
   return (
     <div className='filter-container'>
-      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/">Whishes <span className='tasks-count'>{countAll}</span></NavLink>
-      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/active">Active <span className='tasks-count'>{countActive}</span></NavLink>
-      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/completed">Completed <span className='tasks-count'>{countDone}</span></NavLink>
+      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/home/">Whishes <span className='tasks-count'>{countAll}</span></NavLink>
+      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/home/active/">Active <span className='tasks-count'>{countActive}</span></NavLink>
+      <NavLink className={({isActive}) => isActive ? "link link--active" : "link"} to="/home/completed/">Completed <span className='tasks-count'>{countDone}</span></NavLink>
     </div>
   )
 }

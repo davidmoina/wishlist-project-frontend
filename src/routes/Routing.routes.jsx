@@ -17,9 +17,9 @@ const Routing= () => {
     <BrowserRouter>
       <Routes>
         <Route element={<PrivateRoutes/>}>
-          <Route path='/home' element={<Home/>} >
+          <Route path='/home/' element={<Home/>} >
             <Route index element={<ItemList/>}/>
-            <Route path='/home/:status' element={<ItemList/>}/>
+            <Route path='/home/:status/' element={<ItemList/>}/>
           </Route>
         </Route>
         <Route path='/' element={<Login/>} />
