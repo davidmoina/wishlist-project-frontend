@@ -13,6 +13,8 @@ function App() {
       authorizationParams={{
         redirect_uri: window.location.origin
       }}
+      useRefreshTokens
+      cacheLocation="localstorage"
     >
       <TasksProvider>
         <Routing/>
