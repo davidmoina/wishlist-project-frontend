@@ -6,6 +6,8 @@ import { Login } from '../pages/Login/Login'
 import Home from '../pages/Home/Home'
 import { useAuth0 } from '@auth0/auth0-react'
 import { PrivateRoutes } from '../components/PrivateRoutes/PrivateRoutes'
+import { Profile } from '../pages/Profile/Profile'
+import MainContainer from '../containers/MainContainer/MainContainer'
 
 const Routing= () => {
 
@@ -18,8 +20,11 @@ const Routing= () => {
       <Routes>
         <Route element={<PrivateRoutes/>}>
           <Route path='/' element={<Home/>} >
-            <Route index element={<ItemList/>}/>
-            <Route path='/:status' element={<ItemList/>}/>
+            <Route element={<MainContainer />} >
+              <Route index element={<ItemList/>}/>
+              <Route path=':status' element={<ItemList/>}/>
+            </Route>
+            <Route path='/profile' element={<Profile/>} />
           </Route>
         </Route>
         <Route path='/login' element={<Login/>} />

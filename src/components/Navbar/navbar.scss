@@ -73,6 +73,11 @@
                 }
             }
 
+            .nav-links a{
+                color: inherit;
+                text-decoration: none;
+            }
+
             &--active {
                 opacity: 1;
             }

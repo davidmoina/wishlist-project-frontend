@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './navbar.scss'
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -22,7 +23,8 @@ const Navbar = () => {
 
         <div className={`menu ${active && "menu--active"}`}>
           <span className='user-name-menu'>{user.name}</span>
-          <span>Profile</span>
+          <span className='nav-links'><Link to="/">Home</Link></span>
+          <span className='nav-links'><Link to="/profile">Profile</Link></span>
           <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
