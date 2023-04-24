@@ -9,7 +9,7 @@ export const Login = () => {
   const navigate = useNavigate();
 
   if(isAuthenticated) {
-    return navigate("/home/")
+    return navigate("/")
   }
 
   const {loginWithRedirect} = useAuth0();

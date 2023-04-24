@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import ItemList from '../components/ItemList/ItemList'
 import NotFound from '../pages/NotFound/NotFound'
 import { Login } from '../pages/Login/Login'
@@ -14,18 +14,18 @@ const Routing= () => {
   if(isLoading) return <h1>Loading...</h1>
 
   return (
-    <BrowserRouter basename='/'>
+    <HashRouter basename='/'>
       <Routes>
         <Route element={<PrivateRoutes/>}>
-          <Route path='/home/' element={<Home/>} >
+          <Route path='/' element={<Home/>} >
             <Route index element={<ItemList/>}/>
-            <Route path='/home/:status/' element={<ItemList/>}/>
+            <Route path='/:status' element={<ItemList/>}/>
           </Route>
         </Route>
-        <Route path='/' element={<Login/>} />
-        <Route path='/*' element={<NotFound/>}/>
+        <Route path='/login' element={<Login/>} />
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

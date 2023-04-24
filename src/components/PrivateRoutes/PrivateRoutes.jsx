@@ -8,7 +8,7 @@ export const PrivateRoutes = () => {
     const navigate = useNavigate();
 
     if(!isAuthenticated) {
-        return navigate("/")
+        return navigate("/login")
     }
 
     return <Outlet/>
