@@ -14,7 +14,7 @@ function App() {
       }}
     >
       <TasksProvider>
-        <Toaster/>
+        <Toaster toastOptions={{duration: 2000}} />
         <Routing/>
       </TasksProvider>
     </Auth0Provider>
