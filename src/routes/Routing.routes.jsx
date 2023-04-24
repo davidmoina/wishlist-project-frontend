@@ -14,7 +14,7 @@ const Routing= () => {
   if(isLoading) return <h1>Loading...</h1>
 
   return (
-    <BrowserRouter basename='/'>
+    <BrowserRouter>
       <Routes>
         <Route element={<PrivateRoutes/>}>
           <Route path='/' element={<Home/>} >

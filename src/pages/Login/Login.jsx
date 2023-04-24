@@ -1,15 +1,13 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import styles from './login.module.scss'
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 export const Login = () => {
 
   const { isAuthenticated } = useAuth0();
 
-  const navigate = useNavigate();
-
   if(isAuthenticated) {
-    return navigate("/")
+    return <Navigate to="/" />
   }
 
   const {loginWithRedirect} = useAuth0();
